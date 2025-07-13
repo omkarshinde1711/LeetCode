@@ -1,0 +1,30 @@
+name: Sync LeetCode SQL to MySQL repo
+
+on:
+  push:
+    paths:
+      - 'database/**'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout LeetCode Repo
+        uses: actions/checkout@v4
+
+      - name: Clone MySQL Repo and Sync
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          git config --global user.name "Leetcode Sync Bot"
+          git config --global user.email "omkarshinde1711@gmail.com"
+
+          git clone https://$GH_TOKEN@github.com/omkarshinde1711/mysql.git mysql
+          rm -rf mysql/leetcode
+          mkdir -p mysql/leetcode
+          cp -r database/* mysql/leetcode/
+
+          cd mysql
+          git add /leetcode
+          git commit -m "Sync LeetCode SQL from leetcode/database" || echo "No changes to commit"
+          git push
