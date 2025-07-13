@@ -19,12 +19,16 @@ jobs:
           git config --global user.name "Leetcode Sync Bot"
           git config --global user.email "omkarshinde1711@gmail.com"
 
+          # Clone the mysql repo
           git clone https://$GH_TOKEN@github.com/omkarshinde1711/mysql.git mysql
+
+          # Remove old leetcode folder if exists and copy new files
           rm -rf mysql/leetcode
           mkdir -p mysql/leetcode
           cp -r database/* mysql/leetcode/
 
+          # Commit and push changes
           cd mysql
-          git add /leetcode
+          git add leetcode
           git commit -m "Sync LeetCode SQL from leetcode/database" || echo "No changes to commit"
           git push
