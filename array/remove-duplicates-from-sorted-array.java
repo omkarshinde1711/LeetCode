@@ -9,5 +9,6 @@ class Solution {
             nums[i++] = val;
         }
         return unique.size();
+        //retuen unique numnber size
     }
 }
