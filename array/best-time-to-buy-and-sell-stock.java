@@ -4,6 +4,10 @@ class Solution {
     static int splitindex;
     
     public int maxProfit(int[] prices) {
+        if(prices.length == 1){
+            return 0;
+        }
+
         //find first minium number 
         num = prices[0]; 
         for(int i = 0; i < prices.length; i++){
