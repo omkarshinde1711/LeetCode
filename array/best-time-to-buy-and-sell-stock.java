@@ -1,6 +1,6 @@
 class Solution {
     
-    static int num;
+    static int num , maxNum;
     static int splitindex;
     
     public int maxProfit(int[] prices) {
@@ -11,8 +11,24 @@ class Solution {
                 num = prices[i];
                 splitindex = i;
             }
-        } 
-        System.out.println(num);            
-    return -1;
+        }
+        //debug
+        System.out.println("num " + num);
+        System.out.println("split " + splitindex); 
+        //System.out.println(prices.length);
+        if (splitindex == prices.length-1)
+        {
+            return 0;
+        }
+        else{
+        for (int j = splitindex; j < prices.length; j++){
+            if ( maxNum < prices[j]){
+                maxNum = prices[j];
+            }            
+        }
+        return(maxNum - num);
+        }
+        //System.out.println("max " + maxNum);            
+    //return -1;
     }
 }
