@@ -9,5 +9,6 @@ class Solution {
             Checker.put(nums[i],i);
         }
     throw new IllegalArgumentException("No two sum solution found");
+    //return null // but this exception thing is cool;
     }  
 }
