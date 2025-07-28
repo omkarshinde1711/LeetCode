@@ -29,6 +29,7 @@ class Solution {
                 }
             }
 
+
             // 4. Handle the first column
             if (isFirstColZero) {
                 for (int i = 0; i < m; i++) {
